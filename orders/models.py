@@ -17,6 +17,9 @@ class Dish(models.Model):
         verbose_name = "блюдо"
         verbose_name_plural = "блюда"
 
+    def __str__(self):
+        return self.name
+
 
 class Order(models.Model):
     """Модель заказа"""
@@ -46,7 +49,7 @@ class Order(models.Model):
     @property
     def total_price(self):
         """Возвращаем полный прайс выбранных блюд"""
-        total_price = 0
+        total_price: float = 0
         for item in self.items.all():
             total_price += item.price
         return total_price
