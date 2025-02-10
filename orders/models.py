@@ -29,6 +29,7 @@ class Order(models.Model):
 
     table_number = models.PositiveIntegerField(verbose_name="Номер стола")
     status = models.CharField(
+        default='WAITING',
         max_length=150,
         verbose_name="Статус заказа",
         choices=STATUS_CHOICES,
