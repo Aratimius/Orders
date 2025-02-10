@@ -179,20 +179,11 @@
 
 
 <header data-bs-theme="dark">
-{% include 'orders/includes/inc_menu.html' %}
+    {% include 'orders/includes/inc_menu.html' %}
 </header>
 
 <main>
 
-    <section class="py-5 text-center container">
-        <div class="row py-lg-5">
-            <div class="col-lg-6 col-md-8 mx-auto">
-                <a href="#" class="btn btn-primary my-2">Добавить заказ</a>
-                <a href="#" class="btn btn-secondary my-2">Посмотреть общую выручку</a>
-                </p>
-            </div>
-        </div>
-    </section>
 
     {% block content %}
     {% endblock %}

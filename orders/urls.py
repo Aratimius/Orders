@@ -1,11 +1,10 @@
 from django.urls import path
 from orders.apps import OrdersConfig
-from orders.views import index
-
+from orders.views import OrderListView
 
 app_name = OrdersConfig.name
 
 urlpatterns = [
     #  urls для заказов:
-    path('', index),
+    path('', OrderListView.as_view(), name='list'),
     ]

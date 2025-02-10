@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <a href="#" class="btn btn-info my-2">Добавить заказ</a>
+            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#multiCollapseExample2" aria-expanded="false"
+                    aria-controls="multiCollapseExample2">Расчет выручки
+            </button>
+            <div class="row">
+                <div class="col">
+                    <div class="collapse multi-collapse" id="multiCollapseExample2">
+                        <div class="card card-body">
+                            Полная выручка за все заказы составляет: {{proceeds}} руб.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </p>
+        </div>
+    </div>
+</section>
+
+<table class="table mt-3 text-center">
+    <thead>
+    <tr>
+        <th scope="col">Номер заказа</th>
+        <th scope="col">Номер стола</th>
+        <th scope="col">Общая стоимость</th>
+        <th scope="col">Статус</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for order in order_list %}
+    {% if order.status == 'PAID' %}
+    <tr class="table-success">
+        {% elif order.status == 'WAITING' %}
+    <tr class="table-danger">
+        {% else %}
+    <tr class="table-warning">
+        {% endif %}
+        <td>{{order.pk}}</td>
+        <td>{{order.table_number}}</td>
+        <td>{{order.total_price}} руб.</td>
+        <td>{{order.status}}</td>
+        <td><a class="btn btn-dark rounded-pill" href="#"
+               role="button">Перейти к заказу</a></td>
+        <td><a class="btn btn-dark mx-1 rounded-pill" href="#"
+               role="button">Внести изменения</a></td>
+        <td><a class="btn btn-danger mx-1 rounded-pill" href="#"
+               role="button">Удалить заказ</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
