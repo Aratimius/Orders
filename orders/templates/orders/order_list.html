@@ -4,7 +4,7 @@
 <section class="py-5 text-center container">
     <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
-            <a href="#" class="btn btn-info my-2">Добавить заказ</a>
+            <a href="{% url 'orders:create' %}" class="btn btn-info my-2">Добавить заказ</a>
             <button class="btn btn-secondary" type="button" data-bs-toggle="collapse"
                     data-bs-target="#multiCollapseExample2" aria-expanded="false"
                     aria-controls="multiCollapseExample2">Расчет выручки
@@ -20,6 +20,13 @@
             </div>
             </p>
         </div>
+    </div>
+    <div class="col-3 text-center mx-auto">
+        <form class="d-flex" action="{% url 'orders:list' %}">
+            <input class="form-control me-2" type="search" placeholder="Введите номер стола" aria-label="Поиск"
+                   name="search">
+            <button class="btn btn-black" type="submit">Поиск</button>
+        </form>
     </div>
 </section>
 
@@ -45,11 +52,11 @@
         <td>{{order.table_number}}</td>
         <td>{{order.total_price}} руб.</td>
         <td>{{order.status}}</td>
-        <td><a class="btn btn-dark rounded-pill" href="#"
+        <td><a class="btn btn-dark rounded-pill" href="{% url 'orders:detail' order.pk %}"
                role="button">Перейти к заказу</a></td>
-        <td><a class="btn btn-dark mx-1 rounded-pill" href="#"
+        <td><a class="btn btn-dark mx-1 rounded-pill" href="{% url 'orders:update' order.pk %}"
                role="button">Внести изменения</a></td>
-        <td><a class="btn btn-danger mx-1 rounded-pill" href="#"
+        <td><a class="btn btn-danger mx-1 rounded-pill" href="{% url 'orders:delete' order.pk %}"
                role="button">Удалить заказ</a></td>
     </tr>
     {% endfor %}
