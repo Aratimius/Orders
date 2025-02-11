@@ -49,9 +49,9 @@ class Order(models.Model):
     @property
     def total_price(self):
         """Возвращаем полный прайс выбранных блюд"""
-        total_price: float = 0
-        for item in self.items.all():
-            total_price += item.price
+
+        total_price = sum(item.price for item in self.items.all())
+
         return total_price
 
     class Meta:
