@@ -21,4 +21,4 @@ class OrderCreateForm(StyleFormMixin, ModelForm):
 class OrderUpdateForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Order
-        fields = ('status',)
+        fields = ('table_number', 'items', 'status',)
