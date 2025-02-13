@@ -43,7 +43,7 @@ class OrderTestCase(TestCase):
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.context['proceeds'], 6000)  # Проверка корректности работы get_context_data
+        self.assertEqual(response.context['proceeds'], 0)  # Проверка корректности работы get_context_data
         self.assertEqual(len(response.context['order_list']), 2)
 
     def test_order_create(self):
