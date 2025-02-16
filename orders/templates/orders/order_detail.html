@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col-lg-9 col-md-6 col-sm-12 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <p class="card-text">Номер заказа: {{ object.pk}}</p>
+                        <p class="card-text">Номер стола: {{ object.table_number }}</p>
+                        <p class="card-text">Сумма заказа: {{ object.total_price }}</p>
+                        <p class="card-text">Статус: {{object.status}}</p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a class="btn btn-dark" href="{% url 'orders:list' %}" role="button">Вернуться к списку
+                                    заказов</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <h3>Блюда:</h3>
+
+                        {% for dish in dishes %}
+                        <h4>{{dish}}</h4>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
